@@ -1,12 +1,14 @@
 // FUNCTION IMPLEMENTATION (MULTIPLE BUGS)
 const isPalindrome = function(str) {
-  const noSpaces = str.split(" ").join("");
+  const noSpaces = str.toLowerCase().split(" ").join(""); // remove the second const keyword and add .toLowerCase() to the string to ensure that the string is converted to lowercase before removing spaces
   const midIndex = Math.floor(noSpaces.length/2);
   const lastIndex = noSpaces.length - 1;
 
   for (let i = 0; i < midIndex; i++) {
-    if (str[i] !== str[lastIndex - i]) return false;
-  }
+    if (noSpaces[i] !== noSpaces[lastIndex - i]) return false; //noSpaces is used for the character comparisons within the loop, ensuring that spaces are ignored when determining if the string is a palindrome
+  } 
+
+ return true; // add return true; to return true if the loop doesn't return false
 }
 
 // Assertion Function
@@ -31,5 +33,6 @@ assertPalindrome('fluff', false);
 assertPalindrome('just some random words', false);
 
 // Bonus / Stretch: Uncomment these tests and figure out why these are also failing
-// assertPalindrome('Kayak', true);
-// assertPalindrome('a santa at NASA', true);
+assertPalindrome('Kayak', true);
+assertPalindrome('a santa at NASA', true);
+
